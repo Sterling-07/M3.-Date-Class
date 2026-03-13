@@ -4,15 +4,6 @@
 #include <array>
 using namespace std;
 
-bool Date::Validation(int m, int d, int y) const
-{
-	if (m < 1 || m > 12)
-		return false;
-	if (y < 1)
-		return false;
-
-}
-
 Date::Date(int m, int d, int y)
 	{
 		if (Validation(m, d, y))
@@ -91,4 +82,31 @@ int Date::lastDay(int month, int year) const
 
 	return monthDays[month - 1];
 }
+
+bool Date::Validation(int m, int d, int y) const
+{
+	if (m < 1 || m > 12)
+		return false;
+	if (y < 1)
+		return false;
+
+	int max = lastDay(month, year);
+	return d >= 1 && d <= max;
+}
+
+string Date::Format1() const
+{
+	return to_string(month) + "/" + to_string(day) + "/" + to_string(year);
+}
+
+string Date::Format2() const
+{
+	array<string, 12> months =
+	{ "January","February","March","April","May","June","July","August","September","October","November","December" };
+
+	return months[month - 1] + " " +
+		to_string(day) + " " +
+		to_string(year);
+}
+
 

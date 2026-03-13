@@ -25,7 +25,7 @@ public:
     int lastDay() const;
     int lastDay(int month, int year) const;
 
-
-
-
+    string Format1() const;
+    string Format2() const;
+    string Format3() const;
 };
