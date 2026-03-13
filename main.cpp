@@ -7,6 +7,8 @@ using namespace std;
 
 int main()
 {
-	
+	Date date(12, 25, 2021);
+
+	cout << date.Format3();
 }
 

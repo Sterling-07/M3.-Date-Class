@@ -2,6 +2,7 @@
 #include "Date.h"
 #include <string>
 #include <array>
+#include <iostream>
 using namespace std;
 
 Date::Date(int m, int d, int y)
@@ -73,14 +74,14 @@ int Date::lastDay() const
 	return lastDay(month, year);
 }
 
-int Date::lastDay(int month, int year) const
+int Date::lastDay(int m, int y) const
 {
 	array <int, 12> monthDays = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
 	if (month == 2 && isLeapYear(year))
 		return 29;
 
-	return monthDays[month - 1];
+	return monthDays[m - 1];
 }
 
 bool Date::Validation(int m, int d, int y) const
@@ -90,7 +91,7 @@ bool Date::Validation(int m, int d, int y) const
 	if (y < 1)
 		return false;
 
-	int max = lastDay(month, year);
+	int max = lastDay(m, y);
 	return d >= 1 && d <= max;
 }
 
@@ -105,8 +106,16 @@ string Date::Format2() const
 	{ "January","February","March","April","May","June","July","August","September","October","November","December" };
 
 	return months[month - 1] + " " +
-		to_string(day) + " " +
+		to_string(day) + ", " +
 		to_string(year);
 }
 
+string Date::Format3() const
+{
+	array<string, 12> months =
+	{ "January","February","March","April","May","June","July","August","September","October","November","December" };
 
+	return to_string(day) + " " +
+		months[month - 1] + " " +
+		to_string(year);
+}
