@@ -78,7 +78,7 @@ int Date::lastDay(int m, int y) const
 {
 	array <int, 12> monthDays = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
-	if (month == 2 && isLeapYear(year))
+	if (m == 2 && isLeapYear(y))
 		return 29;
 
 	return monthDays[m - 1];
