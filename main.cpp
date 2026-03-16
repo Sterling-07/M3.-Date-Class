@@ -10,7 +10,7 @@ int main()
 	cout << "Different Formatted Dates\n";
 	cout << "-------------------------\n";
 
-	Date date(2, 29, 2024);
+	Date date(12, 21, 2021);
 
 	cout << date.Format1() << endl;
 	cout << date.Format2() << endl;
