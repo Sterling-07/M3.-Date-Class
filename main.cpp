@@ -7,8 +7,13 @@ using namespace std;
 
 int main()
 {
+	cout << "Different Formatted Dates\n";
+	cout << "-------------------------\n";
+
 	Date date(12, 25, 2021);
 
-	cout << date.Format3();
+	cout << date.Format1() << endl;
+	cout << date.Format2() << endl;
+	cout << date.Format3() << endl;
 }
 
