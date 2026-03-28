@@ -119,3 +119,52 @@ string Date::Format3() const
 		months[month - 1] + " " +
 		to_string(year);
 }
+
+Date& Date:: operator++()
+{
+	int m = 1, d = day + 1, y = year;
+
+	if (!Validation(m, d, y))
+	{
+		d = 1;
+		m++;
+		if (m > 12)
+		{
+			m = 1;
+			y++;
+		}
+	}
+
+	setDate(m, d, y);
+
+	return *this;
+}
+
+Date Date:: operator++(int)
+{
+	Date previous(month, day, year);
+
+	operator++();
+
+	return previous;
+}
+
+Date& Date:: operator--()
+{
+	int m = 1, d = day - 1, y = year;
+
+	if (!Validation(m, d, y))
+	{
+		m--;
+		if (m < 1)
+		{
+			m = 1;
+			y--;
+		}
+		d = lastDay(m, y);
+	}
+
+	setDate(m, d, y);
+
+	return *this;
+}

@@ -29,4 +29,14 @@ public:
     string Format1() const;
     string Format2() const;
     string Format3() const;
+
+    Date& operator++();
+    Date operator++(int);
+    Date& operator--();
+    Date operator--(int);
+    int operator-(const Date& other);
+
+    friend ostream& operator<< (ostream& out, const Date& d);
+    friend istream& operator>> (istream& in, Date& d);
+
 };
