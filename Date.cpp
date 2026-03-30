@@ -122,7 +122,7 @@ string Date::Format3() const
 
 Date& Date:: operator++()
 {
-	int m = 1, d = day + 1, y = year;
+	int m = month, d = day + 1, y = year;
 
 	if (!Validation(m, d, y))
 	{
@@ -151,14 +151,14 @@ Date Date:: operator++(int)
 
 Date& Date:: operator--()
 {
-	int m = 1, d = day - 1, y = year;
+	int m = month, d = day - 1, y = year;
 
 	if (!Validation(m, d, y))
 	{
 		m--;
 		if (m < 1)
 		{
-			m = 1;
+			m = 12;
 			y--;
 		}
 		d = lastDay(m, y);
@@ -167,4 +167,74 @@ Date& Date:: operator--()
 	setDate(m, d, y);
 
 	return *this;
+}
+
+Date Date:: operator--(int)
+{
+	Date previous(month, day, year);
+
+	operator--();
+
+	return previous;
+}
+
+bool Date::operator<(const Date& rhs) const
+{
+	if (year != rhs.year)
+	{
+		return year < rhs.year;
+	}
+	if (month != rhs.month)
+	{
+		return month < rhs.month;
+	}
+
+	return day < rhs.day;
+}
+
+int Date::operator-(const Date& other)
+{
+	int total = 0;
+	Date temp = other;
+
+	if (temp < *this)
+	{
+		while (temp < *this)
+		{
+			++temp;
+			total++;
+		}
+	}
+	else
+	{
+		while (*this < temp)
+		{
+			--temp;
+			total--;
+		}
+	}
+
+	return total;
+}
+
+ostream& operator<<(ostream& out, const Date& d)
+{
+	static const string months[12] =
+	{ "January","February","March","April","May","June","July","August","September","October","November","December"};
+
+	out << months[d.month - 1] << " " << d.day << " " << d.year;
+
+	return out;
+}
+
+istream& operator>>(istream& in, Date& d)
+{
+	int m, day, y;
+
+	cout << "Enter your month, day, and year.";
+	in >> m >> day >> y;
+
+	d.setDate(m, day, y);
+
+	return in;
 }

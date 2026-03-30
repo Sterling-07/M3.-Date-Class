@@ -34,6 +34,7 @@ public:
     Date operator++(int);
     Date& operator--();
     Date operator--(int);
+    bool operator<(const Date& rhs) const;
     int operator-(const Date& other);
 
     friend ostream& operator<< (ostream& out, const Date& d);

@@ -10,10 +10,13 @@ int main()
 	cout << "Different Formatted Dates\n";
 	cout << "-------------------------\n";
 
-	Date date(12, 21, 2021);
+	Date date1(12, 21, 2021);
+	Date date2(12, 18, 2021);
 
-	cout << date.Format1() << endl;
-	cout << date.Format2() << endl;
-	cout << date.Format3() << endl;
+	cout << date1.Format1() << endl;
+	cout << date1.Format2() << endl;
+	cout << date1.Format3() << endl;
+
+	cout << date1 - date2;
 }
 
