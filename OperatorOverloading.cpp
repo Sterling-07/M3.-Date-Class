@@ -1,21 +1,12 @@
-// M3. Date Class.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
 
 #include <iostream>
 #include "Date.h"
 using namespace std;
 
-int main()
+int main2()
 {
-	cout << "Different Formatted Dates\n";
-	cout << "-------------------------\n";
-
-	Date date1(12, 21, 2021);
-	Date date2(4, 15, 2021);
-
-	cout << date1.Format1() << endl;
-	cout << date1.Format2() << endl;
-	cout << date1.Format3() << endl;
+	Date date1(12, 25, 2025);
+	Date date2(4, 16, 2021);
 
 	cout << "Updated Operator Overloading\n";
 	cout << "----------------------------\n";
@@ -28,8 +19,7 @@ int main()
 	cout << "Postifx Decrement Operator: " << date1-- << endl;
 	cout << "Subtraction Operator Example: Days between dates is " << date1 - date2 << " days." << endl;
 	cout << "Stream Extraction Operator: ";
-	Date d; 
+	Date d;
 	cin >> d;
 	cout << "The entered date was " << d << endl;
 }
-
